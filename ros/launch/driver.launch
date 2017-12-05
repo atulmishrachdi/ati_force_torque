@@ -4,6 +4,8 @@
     <arg name="sim" default="false"/>
     
     <!-- send urdf to param server -->
+    <arg name="scenario_parameters" value="sim:=$(arg sim)"/> 
+    <param name="sensor_description" command="$(find xacro)/xacro --inorder '$(find ati_force_torque)/description/urdf/sensor_mini58.urdf.xacro' $(arg scenario_parameters)"/>  
     <param name="sensor_description" command="$(find xacro)/xacro --inorder '$(find ati_force_torque)/description/urdf/sensor.urdf.xacro'" unless = "$(arg sim)"/> 
     
     <!-- sensor state publisher -->
